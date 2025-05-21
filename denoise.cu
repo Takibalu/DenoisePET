@@ -11,10 +11,36 @@ std::string to_string(DenoiseMethod method) {
     case GAUSSIAN:      return "gaussian";
     case MEDIAN:        return "median";
     case BILATERAL:     return "bilateral";
+    case NLM:           return "nlm";
     default:            return "unknown";
     }
 }
 
+__constant__ float kernel_3[3][3] = {
+    {1, 2, 1},
+    {2, 4, 2},
+    {1, 2, 1}
+};
+
+__constant__ float kernel_5[5][5] = {
+    {0.003663f, 0.014652f, 0.023173f, 0.014652f, 0.003663f},
+    {0.014652f, 0.058608f, 0.092103f, 0.058608f, 0.014652f},
+    {0.023173f, 0.092103f, 0.144448f, 0.092103f, 0.023173f},
+    {0.014652f, 0.058608f, 0.092103f, 0.058608f, 0.014652f},
+    {0.003663f, 0.014652f, 0.023173f, 0.014652f, 0.003663f}
+};
+
+__constant__ float kernel_9[9][9] = {
+    {0.00000067, 0.00002292, 0.00019117, 0.00038771, 0.00024404, 0.00038771, 0.00019117, 0.00002292, 0.00000067},
+    {0.00002292, 0.00078634, 0.00655965, 0.01331827, 0.00838894, 0.01331827, 0.00655965, 0.00078634, 0.00002292},
+    {0.00019117, 0.00655965, 0.05472157, 0.11156508, 0.07025366, 0.11156508, 0.05472157, 0.00655965, 0.00019117},
+    {0.00038771, 0.01331827, 0.11156508, 0.22749645, 0.14323822, 0.22749645, 0.11156508, 0.01331827, 0.00038771},
+    {0.00024404, 0.00838894, 0.07025366, 0.14323822, 0.09037601, 0.14323822, 0.07025366, 0.00838894, 0.00024404},
+    {0.00038771, 0.01331827, 0.11156508, 0.22749645, 0.14323822, 0.22749645, 0.11156508, 0.01331827, 0.00038771},
+    {0.00019117, 0.00655965, 0.05472157, 0.11156508, 0.07025366, 0.11156508, 0.05472157, 0.00655965, 0.00019117},
+    {0.00002292, 0.00078634, 0.00655965, 0.01331827, 0.00838894, 0.01331827, 0.00655965, 0.00078634, 0.00002292},
+    {0.00000067, 0.00002292, 0.00019117, 0.00038771, 0.00024404, 0.00038771, 0.00019117, 0.00002292, 0.00000067}
+};
 
 __global__ void kernel_identity(const float* input, float* output, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
@@ -26,7 +52,7 @@ __global__ void kernel_identity(const float* input, float* output, int width, in
     output[idx] = input[idx]; //(no actual denoise)
 }
 
-__global__ void kernel_box_filter(const float* input, float* output, int width, int height) {
+__global__ void kernel_box_filter(const float* input, float* output, int width, int height, int window) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
     if (x >= width || y >= height) return;
@@ -34,8 +60,8 @@ __global__ void kernel_box_filter(const float* input, float* output, int width, 
     float sum = 0.0f;
     int count = 0;
 
-    for (int dy = -1; dy <= 1; ++dy)
-        for (int dx = -1; dx <= 1; ++dx) {
+    for (int dy = -window; dy <= window; ++dy)
+        for (int dx = -window; dx <= window; ++dx) {
             int nx = x + dx;
             int ny = y + dy;
             if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
@@ -47,26 +73,28 @@ __global__ void kernel_box_filter(const float* input, float* output, int width, 
     output[y * width + x] = sum / count;
 }
 
-__global__ void kernel_gaussian_filter(const float* input, float* output, int width, int height) {
+__global__ void kernel_gaussian_filter(const float* input, float* output, int width, int height, int window) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
     if (x >= width || y >= height) return;
 
-    float kernel[3][3] = {
-        {1, 2, 1},
-        {2, 4, 2},
-        {1, 2, 1}
-    };
     float sum = 0.0f;
     float weightSum = 0.0f;
 
-    for (int dy = -1; dy <= 1; ++dy)
-        for (int dx = -1; dx <= 1; ++dx) {
+    for (int dy = -window; dy <= window; ++dy)
+        for (int dx = -window; dx <= window; ++dx) {
             int nx = x + dx;
             int ny = y + dy;
             if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
                 float val = input[ny * width + nx];
-                float weight = kernel[dy + 1][dx + 1];
+
+                float weight;
+                if (window == 1)
+                    weight= kernel_3[dy + window][dx + window];
+                if (window == 2)
+                    weight= kernel_5[dy + window][dx + window];
+                if (window == 4)
+                    weight= kernel_9[dy + window][dx + window];
                 sum += val * weight;
                 weightSum += weight;
             }
@@ -75,16 +103,16 @@ __global__ void kernel_gaussian_filter(const float* input, float* output, int wi
     output[y * width + x] = sum / weightSum;
 }
 
-__global__ void kernel_median_filter(const float* input, float* output, int width, int height) {
+__global__ void kernel_median_filter(const float* input, float* output, int width, int height, int window) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
     if (x >= width || y >= height) return;
-
-    float values[9];
+    //should be window * window
+    float values[81];
     int count = 0;
 
-    for (int dy = -1; dy <= 1; ++dy)
-        for (int dx = -1; dx <= 1; ++dx) {
+    for (int dy = -window; dy <= window; ++dy)
+        for (int dx = -window; dx <= window; ++dx) {
             int nx = x + dx;
             int ny = y + dy;
             if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
@@ -104,7 +132,7 @@ __global__ void kernel_median_filter(const float* input, float* output, int widt
     output[y * width + x] = values[count / 2];
 }
 
-__global__ void kernel_bilateral_filter(const float* input, float* output, int width, int height, float sigma_s, float sigma_r) {
+__global__ void kernel_bilateral_filter(const float* input, float* output, int width, int height, float sigma_s, float sigma_r, int window) {
 
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -116,8 +144,8 @@ __global__ void kernel_bilateral_filter(const float* input, float* output, int w
     float sum = 0.0f;
     float wsum = 0.0f;
 
-    for (int dy = -1; dy <= 1; ++dy) {
-        for (int dx = -1; dx <= 1; ++dx) {
+    for (int dy = -window; dy <= window; ++dy) {
+        for (int dx = -window; dx <= window; ++dx) {
             int nx = x + dx;
             int ny = y + dy;
 
@@ -139,6 +167,53 @@ __global__ void kernel_bilateral_filter(const float* input, float* output, int w
     output[idx] = sum / wsum;
 }
 
+__global__ void kernel_nlm_filter(const float* input, float* output, int width, int height, float h, int patch_radius, int search_radius) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+
+    if (x >= width || y >= height) return;
+
+    int idx = y * width + x;
+    float center = input[idx];
+
+    float norm_factor = 0.0f;
+    float result = 0.0f;
+
+    for (int dy = -search_radius; dy <= search_radius; ++dy) {
+        for (int dx = -search_radius; dx <= search_radius; ++dx) {
+            int sx = x + dx;
+            int sy = y + dy;
+
+            if (sx < 0 || sy < 0 || sx >= width || sy >= height)
+                continue;
+
+            float dist2 = 0.0f;
+
+            for (int py = -patch_radius; py <= patch_radius; ++py) {
+                for (int px = -patch_radius; px <= patch_radius; ++px) {
+                    int cx = x + px;
+                    int cy = y + py;
+                    int cx_s = sx + px;
+                    int cy_s = sy + py;
+
+                    if (cx >= 0 && cy >= 0 && cx < width && cy < height &&
+                        cx_s >= 0 && cy_s >= 0 && cx_s < width && cy_s < height) {
+
+                        float diff = input[cy * width + cx] - input[cy_s * width + cx_s];
+                        dist2 += diff * diff;
+                        }
+                }
+            }
+
+            float weight = expf(-dist2 / (h * h));
+            result += input[sy * width + sx] * weight;
+            norm_factor += weight;
+        }
+    }
+
+    output[idx] = result / norm_factor;
+}
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -151,29 +226,39 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     dim3 threads(16, 16);
     dim3 blocks((width + 15) / 16, (height + 15) / 16);
 
+    const int window = 4;
+
+    const float sigma_s = 2.0f;  // térbeli szórás
+    const float sigma_r = 900.0f;  // intenzitásbeli szórás
+
+    const float h = 3000.0f;            // szűrés erőssége
+    const int patch_radius = 5;       // kis minta mérete
+    const int search_radius = 20;      // keresési ablak mérete
+
     switch (method) {
         case IDENTITY:
             kernel_identity<<<blocks, threads>>>(d_input, d_output, width, height);
             break;
 
         case BOX_FILTER:
-            kernel_box_filter<<<blocks, threads>>>(d_input, d_output, width, height);
+            kernel_box_filter<<<blocks, threads>>>(d_input, d_output, width, height, window);
             break;
 
         case GAUSSIAN:
-            kernel_gaussian_filter<<<blocks, threads>>>(d_input, d_output, width, height);
+            kernel_gaussian_filter<<<blocks, threads>>>(d_input, d_output, width, height, window);
             break;
 
         case MEDIAN:
-            kernel_median_filter<<<blocks, threads>>>(d_input, d_output, width, height);
+            kernel_median_filter<<<blocks, threads>>>(d_input, d_output, width, height, window);
             break;
 
         case BILATERAL:
-            float sigma_s = 75.0f;  // térbeli szórás
-            float sigma_r = 75.0f;  // intenzitásbeli szórás
-            kernel_bilateral_filter<<<blocks, threads>>>(d_input, d_output, width, height, sigma_s, sigma_r);
+            kernel_bilateral_filter<<<blocks, threads>>>(d_input, d_output, width, height, sigma_s, sigma_r, window);
             break;
 
+        case NLM:
+            kernel_nlm_filter<<<blocks, threads>>>(d_input, d_output, width, height, h, patch_radius, search_radius);
+            break;
 
     }
 

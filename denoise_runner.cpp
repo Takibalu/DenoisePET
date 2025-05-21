@@ -7,6 +7,29 @@
 #include <vector>
 #include <filesystem>
 
+#include <numeric>
+#include <limits>
+#include <iostream>
+
+
+void print_statistics(const std::vector<float>& data, const std::string& label) {
+    float minVal = std::numeric_limits<float>::max();
+    float maxVal = std::numeric_limits<float>::lowest();
+    double sum = 0.0;
+
+    for (float val : data) {
+        if (val < minVal) minVal = val;
+        if (val > maxVal) maxVal = val;
+        sum += val;
+    }
+
+    float mean = static_cast<float>(sum / data.size());
+
+    std::cout << label << " - Min: " << minVal
+              << ", Max: " << maxVal
+              << ", Mean: " << mean << std::endl;
+}
+
 void run_denoising(int width, int height, DenoiseMethod method) {
     namespace fs = std::filesystem;
 
@@ -21,7 +44,9 @@ void run_denoising(int width, int height, DenoiseMethod method) {
         in.close();
 
         std::vector<float> output(width * height);
+        //print_statistics(input, "Original " + entry.path().filename().string());
         denoise(input.data(), output.data(), width, height, method);
+        //print_statistics(output, "Denoised " + entry.path().filename().string());
 
         fs::path outPath = outputDir / entry.path().filename();
         std::ofstream out(outPath, std::ios::binary| std::ios::trunc);
@@ -29,4 +54,7 @@ void run_denoising(int width, int height, DenoiseMethod method) {
         out.close();
     }
 }
+
+
+
 

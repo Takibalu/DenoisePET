@@ -7,6 +7,7 @@ enum DenoiseMethod {
     GAUSSIAN,
     MEDIAN,
     BILATERAL,
+    NLM,
 };
 std::string to_string(DenoiseMethod method);
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method);

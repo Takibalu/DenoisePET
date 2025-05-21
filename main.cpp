@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
         else if (methodStr == "gaussian") method = GAUSSIAN;
         else if (methodStr == "median") method = MEDIAN;
         else if (methodStr == "bilateral") method = BILATERAL;
+        else if (methodStr == "nlm") method = NLM;
     }
     try {
         PETProcessor processor(niftiFilePath);
