@@ -1,0 +1,22 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug",
+	"dir-cur-src" : "C:/Users/takib/CLionProjects/MyCudaProject",
+	"dir-top-bld" : "C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug",
+	"dir-top-src" : "C:/Users/takib/CLionProjects/MyCudaProject",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"C:\\Users\\takib\\CLionProjects\\MyCudaProject\\nifti_clib\\niftilib",
+		"C:\\Users\\takib\\CLionProjects\\MyCudaProject\\nifti_clib\\znzlib"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/MyCudaProject.dir"
+}

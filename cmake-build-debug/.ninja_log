@@ -1,0 +1,25 @@
+# ninja log v6
+24	166	7694866018732375	CMakeFiles/MyCudaProject.dir/main.cpp.obj.ddi	eb39947a98eeaf8
+2212	2423	7694867378578117	MyCudaProject.exe	421110d661689d1b
+34	3294	7694835141199584	CMakeFiles/MyCudaProject.dir/kernel.cu.obj	5a6ecde0360c6530
+162	187	7694867358083181	CMakeFiles/MyCudaProject.dir/pet_processor.cpp.obj.modmap	c9d7486c283c4a5d
+40	3298	7694835141259458	CMakeFiles/MyCudaProject.dir/add.cu.obj	3c6304a8861d9dd2
+236	2150	7694866020846527	CMakeFiles/MyCudaProject.dir/denoise_runner.cpp.obj	cd6ab1a3b20bd65c
+162	187	7694867358083181	CMakeFiles/MyCudaProject.dir/CXX.dd	c9d7486c283c4a5d
+4	162	7694867356497242	CMakeFiles/MyCudaProject.dir/pet_processor.cpp.obj.ddi	a1ffac04d966b896
+162	187	7694867358083181	C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/MyCudaProject.dir/CXXModules.json	c9d7486c283c4a5d
+162	187	7694867358083181	CMakeFiles/MyCudaProject.dir/main.cpp.obj.modmap	c9d7486c283c4a5d
+232	1098	7694866020806635	CMakeFiles/MyCudaProject.dir/main.cpp.obj	33a88b41c948f12f
+11	189	7694842473922937	CMakeFiles/nifti_lib.dir/nifti_clib/niftilib/nifti1_test.c.obj	b712b8952411bbb9
+20	268	7694842474012683	CMakeFiles/nifti_lib.dir/nifti_clib/niftilib/nifti_tester001.c.obj	e5c69d9268808ecf
+188	1967	7694867358342296	CMakeFiles/MyCudaProject.dir/pet_processor.cpp.obj	8d844e5b4196f52
+1968	2212	7694867376134888	CMakeFiles/MyCudaProject.dir/cmake_device_link.obj	daf660c2cf16342a
+3	313	7695358084621726	build.ninja	787efa519b31c2fb
+31	184	7694842474122387	CMakeFiles/nifti_lib.dir/nifti_clib/znzlib/znzlib.c.obj	7443d96be8423b8a
+26	194	7694842474062559	CMakeFiles/nifti_lib.dir/nifti_clib/niftilib/nifti_tester002.c.obj	72b794e9c44b82bf
+16	256	7694842473972787	CMakeFiles/nifti_lib.dir/nifti_clib/niftilib/nifti1_tool.c.obj	6946234d4d5afaa
+6	290	7694842473873368	CMakeFiles/nifti_lib.dir/nifti_clib/niftilib/nifti1_io.c.obj	d69c3c54202b9c26
+32	1623	7694866018802027	CMakeFiles/MyCudaProject.dir/denoise.cu.obj	3486f507bd4d5091
+290	360	7694842476705979	nifti_lib.lib	79c968c821f29be6
+28	200	7694866018762454	CMakeFiles/MyCudaProject.dir/denoise_runner.cpp.obj.ddi	644baf2ca81c1ff3
+162	187	7694867358083181	CMakeFiles/MyCudaProject.dir/denoise_runner.cpp.obj.modmap	c9d7486c283c4a5d

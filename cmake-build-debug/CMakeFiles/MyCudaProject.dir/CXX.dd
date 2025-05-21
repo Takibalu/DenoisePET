@@ -1,0 +1,7 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\MyCudaProject.dir\main.cpp.obj: dyndep
+
+build CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj: dyndep
+
+build CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj: dyndep
+

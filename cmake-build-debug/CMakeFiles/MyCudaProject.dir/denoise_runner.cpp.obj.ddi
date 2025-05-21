@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\MyCudaProject.dir\\denoise_runner.cpp.obj",
+            "outputs": [
+                "C:\\Users\\takib\\CLionProjects\\MyCudaProject\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\MyCudaProject.dir\\denoise_runner.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}
