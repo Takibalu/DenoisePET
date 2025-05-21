@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\DenoisePET.dir\\pet_processor.cpp.obj",
+            "outputs": [
+                "C:\\Users\\takib\\CLionProjects\\DenoisePET\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\DenoisePET.dir\\pet_processor.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}

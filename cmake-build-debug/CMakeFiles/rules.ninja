@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: MyCudaProject
+# Project: DenoisePET
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -38,7 +38,7 @@ rule C_STATIC_LIBRARY_LINKER__nifti_lib_Debug
 #############################################
 # Rule for compiling CUDA files.
 
-rule CUDA_COMPILER__MyCudaProject_unscanned_Debug
+rule CUDA_COMPILER__DenoisePET_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\NVIDIA~2\CUDA\v12.8\bin\nvcc.exe -forward-unknown-to-host-compiler $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -x cu -rdc=true -c $in -o $out -Xcompiler=-Fd$TARGET_COMPILE_PDB,-FS
@@ -48,7 +48,7 @@ rule CUDA_COMPILER__MyCudaProject_unscanned_Debug
 #############################################
 # Rule for generating CXX dependencies.
 
-rule CXX_SCAN__MyCudaProject_Debug
+rule CXX_SCAN__DenoisePET_Debug
   deps = msvc
   command = C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1443~1.348\bin\Hostx64\x64\cl.exe $DEFINES $INCLUDES $FLAGS $in -nologo -TP -showIncludes -scanDependencies $DYNDEP_INTERMEDIATE_FILE -Fo$OBJ_FILE
   description = Scanning $in for CXX dependencies
@@ -57,8 +57,8 @@ rule CXX_SCAN__MyCudaProject_Debug
 #############################################
 # Rule to generate ninja dyndep files for CXX.
 
-rule CXX_DYNDEP__MyCudaProject_Debug
-  command = "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" -E cmake_ninja_dyndep --tdi=CMakeFiles\MyCudaProject.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=$out @$out.rsp
+rule CXX_DYNDEP__DenoisePET_Debug
+  command = "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" -E cmake_ninja_dyndep --tdi=CMakeFiles\DenoisePET.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=$out @$out.rsp
   description = Generating CXX dyndep file $out
   rspfile = $out.rsp
   rspfile_content = $in
@@ -68,7 +68,7 @@ rule CXX_DYNDEP__MyCudaProject_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__MyCudaProject_scanned_Debug
+rule CXX_COMPILER__DenoisePET_scanned_Debug
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1443~1.348\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes @$DYNDEP_MODULE_MAP_FILE /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -77,7 +77,7 @@ rule CXX_COMPILER__MyCudaProject_scanned_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__MyCudaProject_unscanned_Debug
+rule CXX_COMPILER__DenoisePET_unscanned_Debug
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1443~1.348\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -86,7 +86,7 @@ rule CXX_COMPILER__MyCudaProject_unscanned_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_DEVICE_LINKER__MyCudaProject_Debug
+rule CXX_EXECUTABLE_DEVICE_LINKER__DenoisePET_Debug
   command = C:\PROGRA~1\NVIDIA~2\CUDA\v12.8\bin\nvcc.exe -forward-unknown-to-host-compiler $LANGUAGE_COMPILE_FLAGS $LINK_FLAGS -Wno-deprecated-gpu-targets -shared -dlink $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES -Xcompiler=-Fd$TARGET_COMPILE_PDB,-FS
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -95,7 +95,7 @@ rule CXX_EXECUTABLE_DEVICE_LINKER__MyCudaProject_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__MyCudaProject_Debug
+rule CXX_EXECUTABLE_LINKER__DenoisePET_Debug
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" -E vs_link_exe --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests $MANIFESTS -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1443~1.348\bin\Hostx64\x64\link.exe /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -113,7 +113,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\takib\CLionProjects\MyCudaProject -BC:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug
+  command = "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\takib\CLionProjects\DenoisePET -BC:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

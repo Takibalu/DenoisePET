@@ -1,4 +1,4 @@
-C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/nifti_lib.dir
-C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/MyCudaProject.dir
-C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/takib/CLionProjects/DenoisePET/cmake-build-debug/CMakeFiles/nifti_lib.dir
+C:/Users/takib/CLionProjects/DenoisePET/cmake-build-debug/CMakeFiles/DenoisePET.dir
+C:/Users/takib/CLionProjects/DenoisePET/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/takib/CLionProjects/DenoisePET/cmake-build-debug/CMakeFiles/rebuild_cache.dir

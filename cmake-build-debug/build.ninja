@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: MyCudaProject
+# Project: DenoisePET
 # Configurations: Debug
 # =============================================================================
 
@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug\
+cmake_ninja_workdir = C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target nifti_lib
 
@@ -49,49 +49,49 @@ cmake_ninja_workdir = C$:\Users\takib\CLionProjects\MyCudaProject\cmake-build-de
 
 build cmake_object_order_depends_target_nifti_lib: phony || .
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_io.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib\nifti1_io.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_io.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib\nifti1_io.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\niftilib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
   TARGET_PDB = nifti_lib.pdb
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_test.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib\nifti1_test.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_test.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib\nifti1_test.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\niftilib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
   TARGET_PDB = nifti_lib.pdb
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_tool.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib\nifti1_tool.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti1_tool.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib\nifti1_tool.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\niftilib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
   TARGET_PDB = nifti_lib.pdb
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti_tester001.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib\nifti_tester001.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti_tester001.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib\nifti_tester001.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\niftilib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
   TARGET_PDB = nifti_lib.pdb
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti_tester002.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib\nifti_tester002.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\niftilib\nifti_tester002.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib\nifti_tester002.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\niftilib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
   TARGET_PDB = nifti_lib.pdb
 
-build CMakeFiles\nifti_lib.dir\nifti_clib\znzlib\znzlib.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib\znzlib.c || cmake_object_order_depends_target_nifti_lib
+build CMakeFiles\nifti_lib.dir\nifti_clib\znzlib\znzlib.c.obj: C_COMPILER__nifti_lib_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib\znzlib.c || cmake_object_order_depends_target_nifti_lib
   FLAGS = /DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
   OBJECT_DIR = CMakeFiles\nifti_lib.dir
   OBJECT_FILE_DIR = CMakeFiles\nifti_lib.dir\nifti_clib\znzlib
   TARGET_COMPILE_PDB = CMakeFiles\nifti_lib.dir\nifti_lib.pdb
@@ -116,132 +116,132 @@ build nifti_lib.lib: C_STATIC_LIBRARY_LINKER__nifti_lib_Debug CMakeFiles\nifti_l
   TARGET_PDB = nifti_lib.pdb
 
 # =============================================================================
-# Object build statements for EXECUTABLE target MyCudaProject
+# Object build statements for EXECUTABLE target DenoisePET
 
 
 #############################################
-# Order-only phony target for MyCudaProject
+# Order-only phony target for DenoisePET
 
-build cmake_object_order_depends_target_MyCudaProject: phony || cmake_object_order_depends_target_nifti_lib
+build cmake_object_order_depends_target_DenoisePET: phony || cmake_object_order_depends_target_nifti_lib
 
-build CMakeFiles\MyCudaProject.dir\main.cpp.obj.ddi: CXX_SCAN__MyCudaProject_Debug C$:\Users\takib\CLionProjects\MyCudaProject\main.cpp || cmake_object_order_depends_target_MyCudaProject
-  DEP_FILE = CMakeFiles\MyCudaProject.dir\main.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\MyCudaProject.dir\main.cpp.obj.ddi
+build CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi: CXX_SCAN__DenoisePET_Debug C$:\Users\takib\CLionProjects\DenoisePET\main.cpp || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJ_FILE = CMakeFiles\MyCudaProject.dir\main.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\MyCudaProject.dir\main.cpp.obj.ddi.i
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJ_FILE = CMakeFiles\DenoisePET.dir\main.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi.i
 
-build CMakeFiles\MyCudaProject.dir\main.cpp.obj: CXX_COMPILER__MyCudaProject_scanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\main.cpp | CMakeFiles\MyCudaProject.dir\main.cpp.obj.modmap || cmake_object_order_depends_target_MyCudaProject CMakeFiles\MyCudaProject.dir\CXX.dd
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\MyCudaProject.dir\main.cpp.obj.modmap
+build CMakeFiles\DenoisePET.dir\main.cpp.obj: CXX_COMPILER__DenoisePET_scanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\main.cpp | CMakeFiles\DenoisePET.dir\main.cpp.obj.modmap || cmake_object_order_depends_target_DenoisePET CMakeFiles\DenoisePET.dir\CXX.dd
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\DenoisePET.dir\main.cpp.obj.modmap
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_PDB = MyCudaProject.pdb
-  dyndep = CMakeFiles/MyCudaProject.dir/CXX.dd
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
+  dyndep = CMakeFiles/DenoisePET.dir/CXX.dd
 
-build CMakeFiles\MyCudaProject.dir\kernel.cu.obj: CUDA_COMPILER__MyCudaProject_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\kernel.cu || cmake_object_order_depends_target_MyCudaProject
-  DEP_FILE = CMakeFiles\MyCudaProject.dir\kernel.cu.obj.d
+build CMakeFiles\DenoisePET.dir\kernel.cu.obj: CUDA_COMPILER__DenoisePET_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\kernel.cu || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\kernel.cu.obj.d
   FLAGS = -D_WINDOWS -Xcompiler=" /EHsc" -Xcompiler=" -Ob0 -Od /RTC1" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-MDd -Xcompiler=-Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_PDB = MyCudaProject.pdb
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
 
-build CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.ddi: CXX_SCAN__MyCudaProject_Debug C$:\Users\takib\CLionProjects\MyCudaProject\pet_processor.cpp || cmake_object_order_depends_target_MyCudaProject
-  DEP_FILE = CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.ddi
+build CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi: CXX_SCAN__DenoisePET_Debug C$:\Users\takib\CLionProjects\DenoisePET\pet_processor.cpp || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJ_FILE = CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.ddi.i
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJ_FILE = CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi.i
 
-build CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj: CXX_COMPILER__MyCudaProject_scanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\pet_processor.cpp | CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.modmap || cmake_object_order_depends_target_MyCudaProject CMakeFiles\MyCudaProject.dir\CXX.dd
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.modmap
+build CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj: CXX_COMPILER__DenoisePET_scanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\pet_processor.cpp | CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.modmap || cmake_object_order_depends_target_DenoisePET CMakeFiles\DenoisePET.dir\CXX.dd
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.modmap
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_PDB = MyCudaProject.pdb
-  dyndep = CMakeFiles/MyCudaProject.dir/CXX.dd
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
+  dyndep = CMakeFiles/DenoisePET.dir/CXX.dd
 
-build CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.ddi: CXX_SCAN__MyCudaProject_Debug C$:\Users\takib\CLionProjects\MyCudaProject\denoise_runner.cpp || cmake_object_order_depends_target_MyCudaProject
-  DEP_FILE = CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.ddi
+build CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi: CXX_SCAN__DenoisePET_Debug C$:\Users\takib\CLionProjects\DenoisePET\denoise_runner.cpp || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJ_FILE = CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.ddi.i
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJ_FILE = CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi.i
 
-build CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj: CXX_COMPILER__MyCudaProject_scanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\denoise_runner.cpp | CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.modmap || cmake_object_order_depends_target_MyCudaProject CMakeFiles\MyCudaProject.dir\CXX.dd
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.modmap
+build CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj: CXX_COMPILER__DenoisePET_scanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\denoise_runner.cpp | CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.modmap || cmake_object_order_depends_target_DenoisePET CMakeFiles\DenoisePET.dir\CXX.dd
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.modmap
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_PDB = MyCudaProject.pdb
-  dyndep = CMakeFiles/MyCudaProject.dir/CXX.dd
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
+  dyndep = CMakeFiles/DenoisePET.dir/CXX.dd
 
-build CMakeFiles\MyCudaProject.dir\denoise.cu.obj: CUDA_COMPILER__MyCudaProject_unscanned_Debug C$:\Users\takib\CLionProjects\MyCudaProject\denoise.cu || cmake_object_order_depends_target_MyCudaProject
-  DEP_FILE = CMakeFiles\MyCudaProject.dir\denoise.cu.obj.d
+build CMakeFiles\DenoisePET.dir\denoise.cu.obj: CUDA_COMPILER__DenoisePET_unscanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\denoise.cu || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\denoise.cu.obj.d
   FLAGS = -D_WINDOWS -Xcompiler=" /EHsc" -Xcompiler=" -Ob0 -Od /RTC1" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-MDd -Xcompiler=-Zi
-  INCLUDES = -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\MyCudaProject\nifti_clib\znzlib
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_PDB = MyCudaProject.pdb
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
 
-build CMakeFiles\MyCudaProject.dir\CXX.dd | C$:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug\CMakeFiles\MyCudaProject.dir\CXXModules.json CMakeFiles\MyCudaProject.dir\main.cpp.obj.modmap CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.modmap CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.modmap: CXX_DYNDEP__MyCudaProject_Debug CMakeFiles\MyCudaProject.dir\main.cpp.obj.ddi CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj.ddi CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj.ddi | C$:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug\CMakeFiles\MyCudaProject.dir\CXXDependInfo.json
+build CMakeFiles\DenoisePET.dir\CXX.dd | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXModules.json CMakeFiles\DenoisePET.dir\main.cpp.obj.modmap CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.modmap CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.modmap: CXX_DYNDEP__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXDependInfo.json
 
 
 # =============================================================================
-# Device Link build statements for EXECUTABLE target MyCudaProject
+# Device Link build statements for EXECUTABLE target DenoisePET
 
 
 #############################################
-# Link the executable CMakeFiles\MyCudaProject.dir\cmake_device_link.obj
+# Link the executable CMakeFiles\DenoisePET.dir\cmake_device_link.obj
 
-build CMakeFiles\MyCudaProject.dir\cmake_device_link.obj: CXX_EXECUTABLE_DEVICE_LINKER__MyCudaProject_Debug CMakeFiles\MyCudaProject.dir\main.cpp.obj CMakeFiles\MyCudaProject.dir\kernel.cu.obj CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj CMakeFiles\MyCudaProject.dir\denoise.cu.obj | nifti_lib.lib || nifti_lib.lib
+build CMakeFiles\DenoisePET.dir\cmake_device_link.obj: CXX_EXECUTABLE_DEVICE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj | nifti_lib.lib || nifti_lib.lib
   LANGUAGE_COMPILE_FLAGS = -D_WINDOWS -Xcompiler=" /EHsc" -Xcompiler=" -Ob0 -Od /RTC1" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-MDd -Xcompiler=-Zi
   LINK_LIBRARIES = nifti_lib.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   LINK_PATH = -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.8\lib\x64
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_FILE = CMakeFiles\MyCudaProject.dir\cmake_device_link.obj
-  TARGET_IMPLIB = MyCudaProject.lib
-  TARGET_PDB = MyCudaProject.pdb
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_FILE = CMakeFiles\DenoisePET.dir\cmake_device_link.obj
+  TARGET_IMPLIB = DenoisePET.lib
+  TARGET_PDB = DenoisePET.pdb
 
 # =============================================================================
-# Link build statements for EXECUTABLE target MyCudaProject
+# Link build statements for EXECUTABLE target DenoisePET
 
 
 #############################################
-# Link the executable MyCudaProject.exe
+# Link the executable DenoisePET.exe
 
-build MyCudaProject.exe: CXX_EXECUTABLE_LINKER__MyCudaProject_Debug CMakeFiles\MyCudaProject.dir\main.cpp.obj CMakeFiles\MyCudaProject.dir\kernel.cu.obj CMakeFiles\MyCudaProject.dir\pet_processor.cpp.obj CMakeFiles\MyCudaProject.dir\denoise_runner.cpp.obj CMakeFiles\MyCudaProject.dir\denoise.cu.obj CMakeFiles\MyCudaProject.dir\cmake_device_link.obj | nifti_lib.lib || nifti_lib.lib
+build DenoisePET.exe: CXX_EXECUTABLE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj CMakeFiles\DenoisePET.dir\cmake_device_link.obj | nifti_lib.lib || nifti_lib.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = nifti_lib.lib  cudadevrt.lib  cudart_static.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   LINK_PATH = -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.8\lib\x64
-  OBJECT_DIR = CMakeFiles\MyCudaProject.dir
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\MyCudaProject.dir\
-  TARGET_FILE = MyCudaProject.exe
-  TARGET_IMPLIB = MyCudaProject.lib
-  TARGET_PDB = MyCudaProject.pdb
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_FILE = DenoisePET.exe
+  TARGET_IMPLIB = DenoisePET.lib
+  TARGET_PDB = DenoisePET.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -252,7 +252,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\takib\CLionProjects\MyCudaProject -BC:\Users\takib\CLionProjects\MyCudaProject\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\takib\CLionProjects\DenoisePET -BC:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -262,7 +262,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build MyCudaProject: phony MyCudaProject.exe
+build DenoisePET: phony DenoisePET.exe
 
 build nifti_lib: phony nifti_lib.lib
 
@@ -272,9 +272,9 @@ build nifti_lib: phony nifti_lib.lib
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/takib/CLionProjects/MyCudaProject/cmake-build-debug
+# Folder: C:/Users/takib/CLionProjects/DenoisePET/cmake-build-debug
 
-build all: phony nifti_lib.lib MyCudaProject.exe
+build all: phony nifti_lib.lib DenoisePET.exe
 
 # =============================================================================
 # Built-in targets
@@ -283,14 +283,14 @@ build all: phony nifti_lib.lib MyCudaProject.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDAInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageMessage.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindZLIB.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake C$:\Users\takib\CLionProjects\MyCudaProject\CMakeLists.txt CMakeCache.txt CMakeFiles\3.30.5\CMakeCCompiler.cmake CMakeFiles\3.30.5\CMakeCUDACompiler.cmake CMakeFiles\3.30.5\CMakeCXXCompiler.cmake CMakeFiles\3.30.5\CMakeRCCompiler.cmake CMakeFiles\3.30.5\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCCompilerABI.c C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDACompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDACompilerABI.cu C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDAInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCUDACompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerSupport.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystem.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCUDACompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CrayClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\LCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX-CXXImportStd.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\OrangeC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TIClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Tasking-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XLClang-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageMessage.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindZLIB.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesAll.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesNative.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesValidate.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAFilterImplicitLibs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAFindToolkit.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeDetermineLinkerId.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeNVCCFilterImplicitInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeNVCCParseImplicitInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake C$:\Users\takib\CLionProjects\DenoisePET\CMakeLists.txt CMakeCache.txt CMakeFiles\3.30.5\CMakeCCompiler.cmake CMakeFiles\3.30.5\CMakeCUDACompiler.cmake CMakeFiles\3.30.5\CMakeCXXCompiler.cmake CMakeFiles\3.30.5\CMakeRCCompiler.cmake CMakeFiles\3.30.5\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDAInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageMessage.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindZLIB.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake C$:\Users\takib\CLionProjects\MyCudaProject\CMakeLists.txt CMakeCache.txt CMakeFiles\3.30.5\CMakeCCompiler.cmake CMakeFiles\3.30.5\CMakeCUDACompiler.cmake CMakeFiles\3.30.5\CMakeCXXCompiler.cmake CMakeFiles\3.30.5\CMakeRCCompiler.cmake CMakeFiles\3.30.5\CMakeSystem.cmake: phony
+build C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCCompilerABI.c C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDACompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDACompilerABI.cu C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCUDAInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCUDACompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineCompilerSupport.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystem.cmake.in C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCUDACompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\CrayClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\LCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX-CXXImportStd.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\NVIDIA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\OrangeC-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TIClang-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Tasking-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XLClang-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindPackageMessage.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\FindZLIB.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesAll.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesNative.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAArchitecturesValidate.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAFilterImplicitLibs.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeCUDAFindToolkit.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeDetermineLinkerId.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeNVCCFilterImplicitInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\CMakeNVCCParseImplicitInfo.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows-NVIDIA-CUDA.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\JetBrains\CLion$ 2024.3.3\bin\cmake\win\x64\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake C$:\Users\takib\CLionProjects\DenoisePET\CMakeLists.txt CMakeCache.txt CMakeFiles\3.30.5\CMakeCCompiler.cmake CMakeFiles\3.30.5\CMakeCUDACompiler.cmake CMakeFiles\3.30.5\CMakeCXXCompiler.cmake CMakeFiles\3.30.5\CMakeRCCompiler.cmake CMakeFiles\3.30.5\CMakeSystem.cmake: phony
 
 
 #############################################

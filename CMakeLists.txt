@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(MyCudaProject CUDA CXX C)
+project(DenoisePET CUDA CXX C)
 enable_language(CUDA)
 set(CMAKE_CXX_STANDARD 20)
 
@@ -32,11 +32,11 @@ set(MY_SOURCES
         denoise.cuh
 )
 
-add_executable(MyCudaProject ${MY_SOURCES})
+add_executable(DenoisePET ${MY_SOURCES})
 
-target_link_libraries(MyCudaProject nifti_lib)
+target_link_libraries(DenoisePET nifti_lib)
 
-set_target_properties(MyCudaProject PROPERTIES
+set_target_properties(DenoisePET PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON
         CUDA_STANDARD 14
 )
