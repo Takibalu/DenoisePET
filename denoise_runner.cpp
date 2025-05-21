@@ -7,7 +7,7 @@
 #include <vector>
 #include <filesystem>
 
-void run_denoising(int width, int height) {
+void run_denoising(int width, int height, DenoiseMethod method) {
     namespace fs = std::filesystem;
     fs::create_directory("denoised");
 
@@ -18,7 +18,7 @@ void run_denoising(int width, int height) {
         in.close();
 
         std::vector<float> output(width * height);
-        denoise(input.data(), output.data(), width, height);
+        denoise(input.data(), output.data(), width, height, method);
 
         std::string outPath = "denoised/" + entry.path().filename().string();
         std::ofstream out(outPath, std::ios::binary);
