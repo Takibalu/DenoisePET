@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
         std::string methodStr = argv[2];
         if (methodStr == "identity") method = IDENTITY;
         else if (methodStr == "box") method = BOX_FILTER;
+        else if (methodStr == "gaussian") method = GAUSSIAN;
     }
     try {
         PETProcessor processor(niftiFilePath);

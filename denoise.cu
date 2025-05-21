@@ -7,6 +7,7 @@ std::string to_string(DenoiseMethod method) {
     switch (method) {
     case IDENTITY:      return "identity";
     case BOX_FILTER:    return "box";
+    case GAUSSIAN:      return "gaussian";
     default:            return "unknown";
     }
 }
@@ -42,6 +43,34 @@ __global__ void kernel_box_filter(const float* input, float* output, int width, 
     output[y * width + x] = sum / count;
 }
 
+__global__ void kernel_gaussian_filter(const float* input, float* output, int width, int height) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if (x >= width || y >= height) return;
+
+    float kernel[3][3] = {
+        {1, 2, 1},
+        {2, 4, 2},
+        {1, 2, 1}
+    };
+    float sum = 0.0f;
+    float weightSum = 0.0f;
+
+    for (int dy = -1; dy <= 1; ++dy)
+        for (int dx = -1; dx <= 1; ++dx) {
+            int nx = x + dx;
+            int ny = y + dy;
+            if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+                float val = input[ny * width + nx];
+                float weight = kernel[dy + 1][dx + 1];
+                sum += val * weight;
+                weightSum += weight;
+            }
+        }
+
+    output[y * width + x] = sum / weightSum;
+}
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -61,6 +90,10 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
 
         case BOX_FILTER:
             kernel_box_filter<<<blocks, threads>>>(d_input, d_output, width, height);
+            break;
+
+        case GAUSSIAN:
+            kernel_gaussian_filter<<<blocks, threads>>>(d_input, d_output, width, height);
             break;
 
     }
