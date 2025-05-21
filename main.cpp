@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
         if (methodStr == "identity") method = IDENTITY;
         else if (methodStr == "box") method = BOX_FILTER;
         else if (methodStr == "gaussian") method = GAUSSIAN;
+        else if (methodStr == "median") method = MEDIAN;
     }
     try {
         PETProcessor processor(niftiFilePath);

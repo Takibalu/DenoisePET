@@ -8,6 +8,7 @@ std::string to_string(DenoiseMethod method) {
     case IDENTITY:      return "identity";
     case BOX_FILTER:    return "box";
     case GAUSSIAN:      return "gaussian";
+    case MEDIAN:        return "median";
     default:            return "unknown";
     }
 }
@@ -71,6 +72,35 @@ __global__ void kernel_gaussian_filter(const float* input, float* output, int wi
     output[y * width + x] = sum / weightSum;
 }
 
+__global__ void kernel_median_filter(const float* input, float* output, int width, int height) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if (x >= width || y >= height) return;
+
+    float values[9];
+    int count = 0;
+
+    for (int dy = -1; dy <= 1; ++dy)
+        for (int dx = -1; dx <= 1; ++dx) {
+            int nx = x + dx;
+            int ny = y + dy;
+            if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+                values[count++] = input[ny * width + nx];
+            }
+        }
+
+    // Bubble sort 9 elements
+    for (int i = 0; i < count - 1; ++i)
+        for (int j = 0; j < count - i - 1; ++j)
+            if (values[j] > values[j + 1]) {
+                float tmp = values[j];
+                values[j] = values[j + 1];
+                values[j + 1] = tmp;
+            }
+
+    output[y * width + x] = values[count / 2];
+}
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -94,6 +124,10 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
 
         case GAUSSIAN:
             kernel_gaussian_filter<<<blocks, threads>>>(d_input, d_output, width, height);
+            break;
+
+        case MEDIAN:
+            kernel_median_filter<<<blocks, threads>>>(d_input, d_output, width, height);
             break;
 
     }
