@@ -1,6 +1,7 @@
 #include "denoise.cuh"
 #include <cuda_runtime.h>
 #include <algorithm>
+#include <iostream>
 
 
 std::string to_string(DenoiseMethod method) {
@@ -9,9 +10,11 @@ std::string to_string(DenoiseMethod method) {
     case BOX_FILTER:    return "box";
     case GAUSSIAN:      return "gaussian";
     case MEDIAN:        return "median";
+    case BILATERAL:     return "bilateral";
     default:            return "unknown";
     }
 }
+
 
 __global__ void kernel_identity(const float* input, float* output, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
@@ -20,7 +23,7 @@ __global__ void kernel_identity(const float* input, float* output, int width, in
     if (x >= width || y >= height) return;
 
     int idx = y * width + x;
-    output[idx] = input[idx]; // Identity (no actual denoise yet)
+    output[idx] = input[idx]; //(no actual denoise)
 }
 
 __global__ void kernel_box_filter(const float* input, float* output, int width, int height) {
@@ -101,6 +104,41 @@ __global__ void kernel_median_filter(const float* input, float* output, int widt
     output[y * width + x] = values[count / 2];
 }
 
+__global__ void kernel_bilateral_filter(const float* input, float* output, int width, int height, float sigma_s, float sigma_r) {
+
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if (x >= width || y >= height) return;
+
+    int idx = y * width + x;
+    float center = input[idx];
+
+    float sum = 0.0f;
+    float wsum = 0.0f;
+
+    for (int dy = -1; dy <= 1; ++dy) {
+        for (int dx = -1; dx <= 1; ++dx) {
+            int nx = x + dx;
+            int ny = y + dy;
+
+            if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+                float neighbor = input[ny * width + nx];
+
+                float spatial_dist2 = dx * dx + dy * dy;
+                float intensity_diff = neighbor - center;
+                float intensity_diff2 = intensity_diff * intensity_diff;
+
+                float w = expf(-spatial_dist2 / (2 * sigma_s * sigma_s) - intensity_diff2 / (2 * sigma_r * sigma_r));
+
+                sum += neighbor * w;
+                wsum += w;
+            }
+        }
+    }
+
+    output[idx] = sum / wsum;
+}
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -129,6 +167,13 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
         case MEDIAN:
             kernel_median_filter<<<blocks, threads>>>(d_input, d_output, width, height);
             break;
+
+        case BILATERAL:
+            float sigma_s = 75.0f;  // térbeli szórás
+            float sigma_r = 75.0f;  // intenzitásbeli szórás
+            kernel_bilateral_filter<<<blocks, threads>>>(d_input, d_output, width, height, sigma_s, sigma_r);
+            break;
+
 
     }
 

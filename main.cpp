@@ -17,6 +17,7 @@ int main(int argc, char* argv[]) {
         else if (methodStr == "box") method = BOX_FILTER;
         else if (methodStr == "gaussian") method = GAUSSIAN;
         else if (methodStr == "median") method = MEDIAN;
+        else if (methodStr == "bilateral") method = BILATERAL;
     }
     try {
         PETProcessor processor(niftiFilePath);
