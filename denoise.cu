@@ -3,6 +3,24 @@
 #include <algorithm>
 
 
+std::string to_string(DenoiseMethod method) {
+    switch (method) {
+    case IDENTITY:      return "identity";
+    case BOX_FILTER:    return "box";
+    default:            return "unknown";
+    }
+}
+
+__global__ void kernel_identity(const float* input, float* output, int width, int height) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+
+    if (x >= width || y >= height) return;
+
+    int idx = y * width + x;
+    output[idx] = input[idx]; // Identity (no actual denoise yet)
+}
+
 __global__ void kernel_box_filter(const float* input, float* output, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -37,6 +55,10 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     dim3 blocks((width + 15) / 16, (height + 15) / 16);
 
     switch (method) {
+        case IDENTITY:
+            kernel_identity<<<blocks, threads>>>(d_input, d_output, width, height);
+            break;
+
         case BOX_FILTER:
             kernel_box_filter<<<blocks, threads>>>(d_input, d_output, width, height);
             break;
