@@ -9,14 +9,18 @@ int main(int argc, char* argv[]) {
     }
 
     std::string niftiFilePath = argv[1];
+    DenoiseMethod method = BOX_FILTER; // alapértelmezett
 
+    if (argc >= 3) {
+        std::string methodStr = argv[2];
+    }
     try {
         PETProcessor processor(niftiFilePath);
         processor.process();
 
         int width = 128;
         int height = 128;
-        run_denoising(width, height);
+        run_denoising(width, height, method);
     } catch (const std::exception &ex) {
         std::cerr << "Error during PET processing: " << ex.what() << std::endl;
         return 1;
