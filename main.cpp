@@ -1,13 +1,25 @@
 #include <iostream>
 #include "pet_processor.h"
 #include "denoise.cuh"
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+
+void print_timestamp(const std::string& label = "") {
+    auto now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+
+    std::cout << label
+              << std::put_time(std::localtime(&now_c), "%Y-%m-%d %H:%M:%S")
+              << std::endl;
+}
 
 int main(int argc, char* argv[]) {
     if (argc < 4) {
         std::cerr << "Usage: MyCudaProject <path_to_nifti_file.nii> <filterMethod>" << std::endl;
         return 1;
     }
-
+    print_timestamp("Start: ");
     std::string niftiFilePath = argv[1];
     std::string methodStr = argv[2];
     std::string dimension = argv[3];
@@ -26,10 +38,11 @@ int main(int argc, char* argv[]) {
 
         int width = 400;
         int height = 400;
-        int depth = 302;
+        int depth = 368;
 
         if (dimension == "2") run_denoising(width, height, method);
         else if (dimension == "3") run_denoising3D(width, height, depth, method);
+        print_timestamp("End: ");
     } catch (const std::exception &ex) {
         std::cerr << "Error during PET processing: " << ex.what() << std::endl;
         return 1;

@@ -43,14 +43,6 @@ __constant__ float kernel_9[9][9] = {
     {0.00000067, 0.00002292, 0.00019117, 0.00038771, 0.00024404, 0.00038771, 0.00019117, 0.00002292, 0.00000067}
 };
 
-static const int window = 4;
-
-static const float sigma_s = 2.0f;  // térbeli szórás
-static const float sigma_r = 1000.0f;  // intenzitásbeli szórás
-
-static const float h = 4000.0f;            // szűrés erőssége
-static const int patch_radius = 3;       // kis minta mérete
-static const int search_radius = 15;      // keresési ablak mérete
 
 __global__ void kernel_identity(const float* input, float* output, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
@@ -307,7 +299,7 @@ __global__ void kernel_median_filter_3D(const float* input, float* output, int w
 
     if (x >= width || y >= height || z >= depth) return;
     //should be (window*2+1)*(window*2+1)*(window*2+1)
-    float values[273];
+    float values[729];
     int count = 0;
 
     for (int dz = -window; dz <= window; ++dz) {
@@ -436,8 +428,6 @@ __global__ void kernel_nlm_filter_3D(const float* input, float* output,
     output[center_idx] = result / (weight_sum + 1e-12f); // prevent div by 0
 }
 
-
-
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
     size_t size = width * height * sizeof(float);
@@ -449,14 +439,10 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     dim3 threads(16, 16);
     dim3 blocks((width + 15) / 16, (height + 15) / 16);
 
-
-
-    // Create CUDA events for timing
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
 
-    // Record start event
     cudaEventRecord(start);
 
     switch (method) {
@@ -485,16 +471,13 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
             break;
 
     }
-
-    // Record stop event and synchronize
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
 
-    // Calculate elapsed time
     float milliseconds = 0;
     cudaEventElapsedTime(&milliseconds, start, stop);
 
-    std::cout << "Denoise method " << to_string(method) << " took " << milliseconds << " ms" << std::endl;
+    std::cout << milliseconds << std::endl;
 
     cudaMemcpy(output, d_output, size, cudaMemcpyDeviceToHost);
     cudaFree(d_input);
@@ -510,15 +493,13 @@ void denoise3D(const float* input, float* output, int width, int height, int dep
     cudaMalloc(&d_output, size);
     cudaMemcpy(d_input, input, size, cudaMemcpyHostToDevice);
 
-    dim3 threads(16,16,4);
-    dim3 blocks((width + 15) / 16, (height + 15) / 16, (depth + 3) / 4);
+    dim3 threads(8,8,8);
+    dim3 blocks((width + 7) / 8, (height + 7) / 8, (depth + 7) / 8);
 
-    // Create CUDA events for timing
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
 
-    // Record start event
     cudaEventRecord(start);
 
     switch (method) {
@@ -547,11 +528,10 @@ void denoise3D(const float* input, float* output, int width, int height, int dep
         break;
 
     }
-    // Record stop event and synchronize
+
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
 
-    // Calculate elapsed time
     float milliseconds = 0;
     cudaEventElapsedTime(&milliseconds, start, stop);
 

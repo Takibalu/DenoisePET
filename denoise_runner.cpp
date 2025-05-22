@@ -10,7 +10,7 @@
 #include <numeric>
 #include <limits>
 #include <iostream>
-
+#include <chrono>
 
 void print_statistics(const std::vector<float>& data, const std::string& label) {
     float minVal = std::numeric_limits<float>::max();
@@ -34,8 +34,9 @@ void run_denoising(int width, int height, DenoiseMethod method) {
     namespace fs = std::filesystem;
 
     std::string methodName = to_string(method);
-    fs::path outputDir = fs::path("..") / ("denoise_" + methodName);
+    fs::path outputDir = fs::path("..") / ("denoise_" + methodName + "_" + std::to_string(window*2+1)+ "x"+ std::to_string(window*2+1)+ "_3000_5_25");
     create_directories(outputDir);
+
 
     for (const auto& entry : fs::directory_iterator(fs::path("..") / "result"/ "slices")) {
         std::ifstream in(entry.path(), std::ios::binary);
@@ -52,6 +53,7 @@ void run_denoising(int width, int height, DenoiseMethod method) {
         std::ofstream out(outPath, std::ios::binary| std::ios::trunc);
         out.write(reinterpret_cast<char*>(output.data()), output.size() * sizeof(float));
         out.close();
+
     }
 }
 
@@ -60,7 +62,7 @@ void run_denoising3D(int width, int height, int depth, DenoiseMethod method) {
 
     std::string methodName = to_string(method);
     fs::path inputPath = fs::path("..") / "result" / "image_file.raw";
-    fs::path outputDir = fs::path("..") / ("denoise3D_" + methodName);
+    fs::path outputDir = fs::path("..") / ("denoise3D_" + methodName + "_" + std::to_string(window*2+1)+ "x"+ std::to_string(window*2+1) + "_2_1500");
     create_directories(outputDir);
 
     size_t volumeSize = static_cast<size_t>(width) * height * depth;
