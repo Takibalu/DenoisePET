@@ -2,6 +2,7 @@
 #include <cuda_runtime.h>
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
 
 std::string to_string(DenoiseMethod method) {
@@ -107,7 +108,7 @@ __global__ void kernel_median_filter(const float* input, float* output, int widt
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
     if (x >= width || y >= height) return;
-    //should be window * window
+    //should be (window*2+1)*(window*2+1)
     float values[81];
     int count = 0;
 
@@ -214,6 +215,119 @@ __global__ void kernel_nlm_filter(const float* input, float* output, int width, 
     output[idx] = result / norm_factor;
 }
 
+__global__ void kernel_identity_3D(const float* input, float* output, int width, int height, int depth) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+
+    int idx = z * height * width + y * width + x;
+    output[idx] = input[idx];
+}
+
+__global__ void kernel_box_filter_3D(const float* input, float* output, int width, int height, int depth, int window) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+
+    float sum = 0.0f;
+    int count = 0;
+
+    for (int dz = -window; dz <= window; ++dz) {
+        for (int dy = -window; dy <= window; ++dy) {
+            for (int dx = -window; dx <= window; ++dx) {
+                int nx = x + dx;
+                int ny = y + dy;
+                int nz = z + dz;
+                if (nx >= 0 && ny >= 0 && nz >= 0 && nx < width && ny < height && nz < depth) {
+                    sum += input[nz * width * height + ny * width + nx];
+                    count++;
+                }
+            }
+        }
+    }
+
+    output[z * width * height + y * width + x] = sum / count;
+}
+
+__global__ void kernel_gaussian_filter_3D(const float* input, float* output,
+                                          int width, int height, int depth, int window) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+
+    float sum = 0.0f;
+    float weightSum = 0.0f;
+
+    for (int dz = -window; dz <= window; ++dz) {
+        for (int dy = -window; dy <= window; ++dy) {
+            for (int dx = -window; dx <= window; ++dx) {
+                int nx = x + dx;
+                int ny = y + dy;
+                int nz = z + dz;
+
+                if (nx >= 0 && ny >= 0 && nz >= 0 && nx < width && ny < height && nz < depth) {
+                    float val = input[nz * height * width + ny * width + nx];
+
+                    // Compute 3D Gaussian weight
+                    float distanceSq = dx * dx + dy * dy + dz * dz;
+                    float sigma = float(window);  // adjust as needed
+                    float weight = expf(-distanceSq / (2.0f * sigma * sigma));
+
+                    sum += val * weight;
+                    weightSum += weight;
+                }
+            }
+        }
+    }
+
+    output[z * height * width + y * width + x] = sum / weightSum;
+}
+
+
+__global__ void kernel_median_filter_3D(const float* input, float* output, int width, int height, int depth, int window) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+    //should be (window*2+1)*(window*2+1)*(window*2+1)
+    float values[273];
+    int count = 0;
+
+    for (int dz = -window; dz <= window; ++dz) {
+        for (int dy = -window; dy <= window; ++dy) {
+            for (int dx = -window; dx <= window; ++dx) {
+                int nx = x + dx;
+                int ny = y + dy;
+                int nz = z + dz;
+
+                if (nx >= 0 && ny >= 0 && nz >= 0 && nx < width && ny < height && nz < depth) {
+                    values[count++] = input[nz * width * height + ny * width + nx];
+                }
+            }
+        }
+    }
+
+    // Simple bubble sort for small count
+    for (int i = 0; i < count - 1; ++i) {
+        for (int j = 0; j < count - i - 1; ++j) {
+            if (values[j] > values[j + 1]) {
+                float tmp = values[j];
+                values[j] = values[j + 1];
+                values[j + 1] = tmp;
+            }
+        }
+    }
+
+    output[z * width * height + y * width + x] = values[count / 2];
+}
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -226,7 +340,7 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     dim3 threads(16, 16);
     dim3 blocks((width + 15) / 16, (height + 15) / 16);
 
-    const int window = 4;
+    const int window = 2;
 
     const float sigma_s = 2.0f;  // térbeli szórás
     const float sigma_r = 900.0f;  // intenzitásbeli szórás
@@ -234,6 +348,14 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     const float h = 3000.0f;            // szűrés erőssége
     const int patch_radius = 5;       // kis minta mérete
     const int search_radius = 20;      // keresési ablak mérete
+
+    // Create CUDA events for timing
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    // Record start event
+    cudaEventRecord(start);
 
     switch (method) {
         case IDENTITY:
@@ -261,6 +383,78 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
             break;
 
     }
+
+    // Record stop event and synchronize
+    cudaEventRecord(stop);
+    cudaEventSynchronize(stop);
+
+    // Calculate elapsed time
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
+
+    std::cout << "Denoise method " << to_string(method) << " took " << milliseconds << " ms" << std::endl;
+
+    cudaMemcpy(output, d_output, size, cudaMemcpyDeviceToHost);
+    cudaFree(d_input);
+    cudaFree(d_output);
+}
+
+
+void denoise3D(const float* input, float* output, int width, int height, int depth, DenoiseMethod method) {
+    float *d_input, *d_output;
+    size_t size = width * height * depth * sizeof(float);
+
+    cudaMalloc(&d_input, size);
+    cudaMalloc(&d_output, size);
+    cudaMemcpy(d_input, input, size, cudaMemcpyHostToDevice);
+
+    dim3 threads(8,8,8);
+    dim3 blocks((width + 7) / 8, (height + 7) / 8, (depth + 7) / 8);
+    const int window = 1;
+
+    // Create CUDA events for timing
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    // Record start event
+    cudaEventRecord(start);
+
+    switch (method) {
+    case IDENTITY:
+        kernel_identity_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth);
+        break;
+
+    case BOX_FILTER:
+        kernel_box_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, window);
+        break;
+
+    case GAUSSIAN:
+        kernel_gaussian_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, window);
+        break;
+
+    case MEDIAN:
+        kernel_median_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, window);
+        break;
+/*
+    case BILATERAL:
+        kernel_bilateral_filter<<<blocks, threads>>>(d_input, d_output, width, height, sigma_s, sigma_r, window);
+        break;
+
+    case NLM:
+        kernel_nlm_filter<<<blocks, threads>>>(d_input, d_output, width, height, h, patch_radius, search_radius);
+        break;
+*/
+    }
+    // Record stop event and synchronize
+    cudaEventRecord(stop);
+    cudaEventSynchronize(stop);
+
+    // Calculate elapsed time
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
+
+    std::cout << "Denoise method " << to_string(method) << " took " << milliseconds << " ms" << std::endl;
 
     cudaMemcpy(output, d_output, size, cudaMemcpyDeviceToHost);
     cudaFree(d_input);
