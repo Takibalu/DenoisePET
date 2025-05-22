@@ -43,6 +43,15 @@ __constant__ float kernel_9[9][9] = {
     {0.00000067, 0.00002292, 0.00019117, 0.00038771, 0.00024404, 0.00038771, 0.00019117, 0.00002292, 0.00000067}
 };
 
+static const int window = 4;
+
+static const float sigma_s = 2.0f;  // térbeli szórás
+static const float sigma_r = 1000.0f;  // intenzitásbeli szórás
+
+static const float h = 4000.0f;            // szűrés erőssége
+static const int patch_radius = 3;       // kis minta mérete
+static const int search_radius = 15;      // keresési ablak mérete
+
 __global__ void kernel_identity(const float* input, float* output, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -143,7 +152,7 @@ __global__ void kernel_bilateral_filter(const float* input, float* output, int w
     float center = input[idx];
 
     float sum = 0.0f;
-    float wsum = 0.0f;
+    float weight_sum = 0.0f;
 
     for (int dy = -window; dy <= window; ++dy) {
         for (int dx = -window; dx <= window; ++dx) {
@@ -157,27 +166,28 @@ __global__ void kernel_bilateral_filter(const float* input, float* output, int w
                 float intensity_diff = neighbor - center;
                 float intensity_diff2 = intensity_diff * intensity_diff;
 
-                float w = expf(-spatial_dist2 / (2 * sigma_s * sigma_s) - intensity_diff2 / (2 * sigma_r * sigma_r));
+                float weight = expf(-spatial_dist2 / (2 * sigma_s * sigma_s) - intensity_diff2 / (2 * sigma_r * sigma_r));
 
-                sum += neighbor * w;
-                wsum += w;
+                sum += neighbor * weight;
+                weight_sum += weight;
             }
         }
     }
 
-    output[idx] = sum / wsum;
+    output[idx] = sum / weight_sum;
 }
 
-__global__ void kernel_nlm_filter(const float* input, float* output, int width, int height, float h, int patch_radius, int search_radius) {
+__global__ void kernel_nlm_filter(const float* input, float* output, int width, int height, float h, int patch_radius,
+                                  int search_radius)
+{
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
     if (x >= width || y >= height) return;
 
-    int idx = y * width + x;
-    float center = input[idx];
+    int center_idx = y * width + x;
 
-    float norm_factor = 0.0f;
+    float weight_sum = 0.0f;
     float result = 0.0f;
 
     for (int dy = -search_radius; dy <= search_radius; ++dy) {
@@ -194,13 +204,13 @@ __global__ void kernel_nlm_filter(const float* input, float* output, int width, 
                 for (int px = -patch_radius; px <= patch_radius; ++px) {
                     int cx = x + px;
                     int cy = y + py;
-                    int cx_s = sx + px;
-                    int cy_s = sy + py;
+                    int qx = sx + px;
+                    int qy = sy + py;
 
                     if (cx >= 0 && cy >= 0 && cx < width && cy < height &&
-                        cx_s >= 0 && cy_s >= 0 && cx_s < width && cy_s < height) {
+                        qx >= 0 && qy >= 0 && qx < width && qy < height) {
 
-                        float diff = input[cy * width + cx] - input[cy_s * width + cx_s];
+                        float diff = input[cy * width + cx] - input[qy * width + qx];
                         dist2 += diff * diff;
                         }
                 }
@@ -208,11 +218,11 @@ __global__ void kernel_nlm_filter(const float* input, float* output, int width, 
 
             float weight = expf(-dist2 / (h * h));
             result += input[sy * width + sx] * weight;
-            norm_factor += weight;
+            weight_sum += weight;
         }
     }
 
-    output[idx] = result / norm_factor;
+    output[center_idx] = result / (weight_sum + 1e-12f); //prevent div by 0
 }
 
 __global__ void kernel_identity_3D(const float* input, float* output, int width, int height, int depth) {
@@ -328,6 +338,105 @@ __global__ void kernel_median_filter_3D(const float* input, float* output, int w
     output[z * width * height + y * width + x] = values[count / 2];
 }
 
+__global__ void kernel_bilateral_filter_3D(const float* input, float* output,
+                                           int width, int height, int depth,
+                                           float sigma_s, float sigma_r, int window) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+
+    int center_idx = z * width * height + y * width + x;
+    float center_val = input[center_idx];
+
+    float sum = 0.0f;
+    float weight_sum = 0.0f;
+
+    for (int dz = -window; dz <= window; ++dz) {
+        for (int dy = -window; dy <= window; ++dy) {
+            for (int dx = -window; dx <= window; ++dx) {
+                int nx = x + dx;
+                int ny = y + dy;
+                int nz = z + dz;
+
+                if (nx >= 0 && ny >= 0 && nz >= 0 && nx < width && ny < height && nz < depth) {
+                    int neighbor_idx = nz * width * height + ny * width + nx;
+                    float neighbor_val = input[neighbor_idx];
+
+                    float spatial_dist2 = dx * dx + dy * dy + dz * dz;
+                    float intensity_diff2 = (neighbor_val - center_val) * (neighbor_val - center_val);
+
+                    float weight = expf(-spatial_dist2 / (2.0f * sigma_s * sigma_s)
+                                        - intensity_diff2 / (2.0f * sigma_r * sigma_r));
+
+                    sum += neighbor_val * weight;
+                    weight_sum += weight;
+                }
+            }
+        }
+    }
+
+    output[center_idx] = sum / weight_sum;
+}
+
+__global__ void kernel_nlm_filter_3D(const float* input, float* output,
+                                     int width, int height, int depth,
+                                     float h, int search_radius, int patch_radius) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int z = blockIdx.z * blockDim.z + threadIdx.z;
+
+    if (x >= width || y >= height || z >= depth) return;
+
+    int center_idx = z * width * height + y * width + x;
+
+    float weight_sum = 0.0f;
+    float result = 0.0f;
+
+    for (int dz = -search_radius; dz <= search_radius; ++dz) {
+        for (int dy = -search_radius; dy <= search_radius; ++dy) {
+            for (int dx = -search_radius; dx <= search_radius; ++dx) {
+                int sx = x + dx;
+                int sy = y + dy;
+                int sz = z + dz;
+
+                if (sx < 0 || sy < 0 || sz < 0 || sx >= width || sy >= height || sz >= depth)
+                    continue;
+
+                float dist2 = 0.0f;
+
+                for (int pz = -patch_radius; pz <= patch_radius; ++pz) {
+                    for (int py = -patch_radius; py <= patch_radius; ++py) {
+                        for (int px = -patch_radius; px <= patch_radius; ++px) {
+                            int cx = x + px, cy = y + py, cz = z + pz;
+                            int qx = sx + px, qy = sy + py, qz = sz + pz;
+
+                            if (cx < 0 || cy < 0 || cz < 0 || cx >= width || cy >= height || cz >= depth ||
+                                qx < 0 || qy < 0 || qz < 0 || qx >= width || qy >= height || qz >= depth)
+                                continue;
+
+                            int c_idx = cz * width * height + cy * width + cx;
+                            int q_idx = qz * width * height + qy * width + qx;
+
+                            float diff = input[c_idx] - input[q_idx];
+                            dist2 += diff * diff;
+                        }
+                    }
+                }
+
+                float weight = expf(-dist2 / (h * h));
+                int s_idx = sz * width * height + sy * width + sx;
+                result += input[s_idx] * weight;
+                weight_sum += weight;
+            }
+        }
+    }
+
+    output[center_idx] = result / (weight_sum + 1e-12f); // prevent div by 0
+}
+
+
 
 void denoise(const float* input, float* output, int width, int height, DenoiseMethod method) {
     float *d_input, *d_output;
@@ -340,14 +449,7 @@ void denoise(const float* input, float* output, int width, int height, DenoiseMe
     dim3 threads(16, 16);
     dim3 blocks((width + 15) / 16, (height + 15) / 16);
 
-    const int window = 2;
 
-    const float sigma_s = 2.0f;  // térbeli szórás
-    const float sigma_r = 900.0f;  // intenzitásbeli szórás
-
-    const float h = 3000.0f;            // szűrés erőssége
-    const int patch_radius = 5;       // kis minta mérete
-    const int search_radius = 20;      // keresési ablak mérete
 
     // Create CUDA events for timing
     cudaEvent_t start, stop;
@@ -408,9 +510,8 @@ void denoise3D(const float* input, float* output, int width, int height, int dep
     cudaMalloc(&d_output, size);
     cudaMemcpy(d_input, input, size, cudaMemcpyHostToDevice);
 
-    dim3 threads(8,8,8);
-    dim3 blocks((width + 7) / 8, (height + 7) / 8, (depth + 7) / 8);
-    const int window = 1;
+    dim3 threads(16,16,4);
+    dim3 blocks((width + 15) / 16, (height + 15) / 16, (depth + 3) / 4);
 
     // Create CUDA events for timing
     cudaEvent_t start, stop;
@@ -436,15 +537,15 @@ void denoise3D(const float* input, float* output, int width, int height, int dep
     case MEDIAN:
         kernel_median_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, window);
         break;
-/*
+
     case BILATERAL:
-        kernel_bilateral_filter<<<blocks, threads>>>(d_input, d_output, width, height, sigma_s, sigma_r, window);
+        kernel_bilateral_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, sigma_s, sigma_r, window);
         break;
 
     case NLM:
-        kernel_nlm_filter<<<blocks, threads>>>(d_input, d_output, width, height, h, patch_radius, search_radius);
+        kernel_nlm_filter_3D<<<blocks, threads>>>(d_input, d_output, width, height, depth, h, patch_radius, search_radius);
         break;
-*/
+
     }
     // Record stop event and synchronize
     cudaEventRecord(stop);
