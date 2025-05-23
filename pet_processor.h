@@ -9,8 +9,7 @@
 
 class PETProcessor {
 public:
-    explicit PETProcessor(const std::string &filePath);
-
+    PETProcessor(const std::string &filePath);
     void process(std::string dimension);
 
 private:

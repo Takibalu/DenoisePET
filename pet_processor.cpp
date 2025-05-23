@@ -3,10 +3,8 @@
 //
 
 #include "pet_processor.h"
-
 #include <filesystem>
 #include <fstream>
-
 #include "nifti1_io.h"
 #include <iostream>
 
@@ -19,11 +17,12 @@ void PETProcessor::process(std::string dimension) {
 
     nifti_image *image = nifti_image_read(path.c_str(), 1);
     if (!image) {
-        std::cerr << "Failed to load NIfTI file: " << path << std::endl;
-        if (!nifti_validfilename(path.c_str())) {
-            std::cerr << "Invalid filename for NIfTI: " << path << std::endl;
-        }
-        return;
+        throw std::runtime_error("Failed to load PET NIfTI file: " + path);
+    }
+
+    if (image->datatype != DT_FLOAT32) {
+        nifti_image_free(image);
+        throw std::runtime_error("Unsupported data type in PET file (only float32 supported).");
     }
 
     std::cout << "File loaded: " << path << std::endl;
@@ -36,57 +35,53 @@ void PETProcessor::process(std::string dimension) {
         create_directory(outDir);
     }
 
-    if (image->datatype == DT_FLOAT32) {
-        float *data = static_cast<float *>(image->data);
-        int width = image->nx;
-        int height = image->ny;
-        int depth = image->nz;
+    float *data = static_cast<float *>(image->data);
+    int width = image->nx;
+    int height = image->ny;
+    int depth = image->nz;
 
-        if (dimension == "2")
-        {
-            fs::path slicesDir = outDir / "slices";
-            if (!exists(slicesDir)) {
-                create_directory(slicesDir);
-            }
-            for (int z = 0; z < depth; ++z) {
-                fs::path outPath = slicesDir / ("slice_" + std::to_string(z) + ".raw");
-                std::ofstream out(outPath, std::ios::binary);
-
-                for (int y = 0; y < height; ++y) {
-                    for (int x = 0; x < width; ++x) {
-                        int idx = z * width * height + y * width + x;
-                        out.write(reinterpret_cast<char*>(&data[idx]), sizeof(float));
-                    }
-                }
-
-                out.close();
-            }
-
-            std::cout << "Saved " << depth << " slice files.\n";
+    if (dimension == "2")
+    {
+        fs::path slicesDir = outDir / "slices";
+        if (!exists(slicesDir)) {
+            create_directory(slicesDir);
         }
-        else if (dimension == "3")
-        {
-            fs::path outPath = outDir / "image_file.raw";
+        for (int z = 0; z < depth; ++z) {
+            fs::path outPath = slicesDir / ("slice_" + std::to_string(z) + ".raw");
             std::ofstream out(outPath, std::ios::binary);
-            for (int z = 0; z < depth; ++z) {
-                for (int y = 0; y < height; ++y) {
-                    for (int x = 0; x < width; ++x) {
-                        int idx = z * width * height + y * width + x;
-                        out.write(reinterpret_cast<char*>(&data[idx]), sizeof(float));
-                    }
+
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int idx = z * width * height + y * width + x;
+                    out.write(reinterpret_cast<char*>(&data[idx]), sizeof(float));
                 }
             }
+
             out.close();
-            std::cout << "Saved 3D image to file.\n";
-        }
-        else
-        {
-            std::cerr << "Unknown dimension argument: " << dimension << std::endl;
         }
 
-    } else {
-        std::cout << "Unsupported data type for processing" << std::endl;
+        std::cout << "Saved " << depth << " slice files.\n";
     }
+    else if (dimension == "3")
+    {
+        fs::path outPath = outDir / "pet_image_file.raw";
+        std::ofstream out(outPath, std::ios::binary);
+        for (int z = 0; z < depth; ++z) {
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int idx = z * width * height + y * width + x;
+                    out.write(reinterpret_cast<char*>(&data[idx]), sizeof(float));
+                }
+            }
+        }
+        out.close();
+        std::cout << "Saved 3D image to file.\n";
+    }
+    else
+    {
+        std::cerr << "Unknown dimension argument: " << dimension << std::endl;
+    }
+
 
     nifti_image_free(image);
 }

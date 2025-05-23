@@ -30,6 +30,8 @@ set(MY_SOURCES
         denoise_runner.cpp
         denoise.cu
         denoise.cuh
+        ct_processor.cpp
+        ct_processor.h
 )
 
 add_executable(DenoisePET ${MY_SOURCES})

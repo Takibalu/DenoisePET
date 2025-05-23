@@ -5,6 +5,8 @@
 #include <ctime>
 #include <iomanip>
 
+#include "ct_processor.h"
+
 void print_timestamp(const std::string& label = "") {
     auto now = std::chrono::system_clock::now();
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
@@ -15,14 +17,15 @@ void print_timestamp(const std::string& label = "") {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc < 4) {
-        std::cerr << "Usage: MyCudaProject <path_to_nifti_file.nii> <filterMethod>" << std::endl;
+    if (argc < 5) {
+        std::cerr << "Usage: DenoisePET <pet.nii> <ct.nii> <filterMethod> <dimension>" << std::endl;
         return 1;
     }
     print_timestamp("Start: ");
-    std::string niftiFilePath = argv[1];
-    std::string methodStr = argv[2];
-    std::string dimension = argv[3];
+    std::string petPath = argv[1];
+    std::string ctPath = argv[2];
+    std::string methodStr = argv[3];
+    std::string dimension = argv[4];
     DenoiseMethod method = BOX_FILTER;
 
     if (methodStr == "identity") method = IDENTITY;
@@ -31,17 +34,28 @@ int main(int argc, char* argv[]) {
     else if (methodStr == "median") method = MEDIAN;
     else if (methodStr == "bilateral") method = BILATERAL;
     else if (methodStr == "nlm") method = NLM;
+    else if (methodStr == "joint_bilateral") method = JOINT_BILATERAL;
+    else if (methodStr == "joint_nlm") method = JOINT_NLM;
 
     try {
-        PETProcessor processor(niftiFilePath);
-        processor.process(dimension);
+        PETProcessor petProcessor(petPath);
+        petProcessor.process(dimension);
 
         int width = 400;
         int height = 400;
-        int depth = 368;
+        int depth = 304;
 
         if (dimension == "2") run_denoising(width, height, method);
-        else if (dimension == "3") run_denoising3D(width, height, depth, method);
+        else if (dimension == "3")
+        {
+            if (method == JOINT_BILATERAL || method == JOINT_NLM) {
+                CTProcessor ctProcessor(ctPath);
+                ctProcessor.process();
+                run_denoising3D_joint(width, height, depth, method);
+            } else {
+                run_denoising3D(width, height, depth, method);
+            }
+        }
         print_timestamp("End: ");
     } catch (const std::exception &ex) {
         std::cerr << "Error during PET processing: " << ex.what() << std::endl;

@@ -196,7 +196,25 @@ build CMakeFiles\DenoisePET.dir\denoise.cu.obj: CUDA_COMPILER__DenoisePET_unscan
   TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
   TARGET_PDB = DenoisePET.pdb
 
-build CMakeFiles\DenoisePET.dir\CXX.dd | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXModules.json CMakeFiles\DenoisePET.dir\main.cpp.obj.modmap CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.modmap CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.modmap: CXX_DYNDEP__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXDependInfo.json
+build CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.ddi: CXX_SCAN__DenoisePET_Debug C$:\Users\takib\CLionProjects\DenoisePET\ct_processor.cpp || cmake_object_order_depends_target_DenoisePET
+  DEP_FILE = CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.ddi
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJ_FILE = CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.ddi.i
+
+build CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj: CXX_COMPILER__DenoisePET_scanned_Debug C$:\Users\takib\CLionProjects\DenoisePET\ct_processor.cpp | CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.modmap || cmake_object_order_depends_target_DenoisePET CMakeFiles\DenoisePET.dir\CXX.dd
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.modmap
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
+  INCLUDES = -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\niftilib -IC:\Users\takib\CLionProjects\DenoisePET\nifti_clib\znzlib
+  OBJECT_DIR = CMakeFiles\DenoisePET.dir
+  OBJECT_FILE_DIR = CMakeFiles\DenoisePET.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DenoisePET.dir\
+  TARGET_PDB = DenoisePET.pdb
+  dyndep = CMakeFiles/DenoisePET.dir/CXX.dd
+
+build CMakeFiles\DenoisePET.dir\CXX.dd | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXModules.json CMakeFiles\DenoisePET.dir\main.cpp.obj.modmap CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.modmap CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.modmap CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.modmap: CXX_DYNDEP__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj.ddi CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj.ddi CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj.ddi CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj.ddi | C$:\Users\takib\CLionProjects\DenoisePET\cmake-build-debug\CMakeFiles\DenoisePET.dir\CXXDependInfo.json
 
 
 # =============================================================================
@@ -206,7 +224,7 @@ build CMakeFiles\DenoisePET.dir\CXX.dd | C$:\Users\takib\CLionProjects\DenoisePE
 #############################################
 # Link the executable CMakeFiles\DenoisePET.dir\cmake_device_link.obj
 
-build CMakeFiles\DenoisePET.dir\cmake_device_link.obj: CXX_EXECUTABLE_DEVICE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj | nifti_lib.lib || nifti_lib.lib
+build CMakeFiles\DenoisePET.dir\cmake_device_link.obj: CXX_EXECUTABLE_DEVICE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj | nifti_lib.lib || nifti_lib.lib
   LANGUAGE_COMPILE_FLAGS = -D_WINDOWS -Xcompiler=" /EHsc" -Xcompiler=" -Ob0 -Od /RTC1" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-MDd -Xcompiler=-Zi
   LINK_LIBRARIES = nifti_lib.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   LINK_PATH = -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.8\lib\x64
@@ -223,7 +241,7 @@ build CMakeFiles\DenoisePET.dir\cmake_device_link.obj: CXX_EXECUTABLE_DEVICE_LIN
 #############################################
 # Link the executable DenoisePET.exe
 
-build DenoisePET.exe: CXX_EXECUTABLE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj CMakeFiles\DenoisePET.dir\cmake_device_link.obj | nifti_lib.lib || nifti_lib.lib
+build DenoisePET.exe: CXX_EXECUTABLE_LINKER__DenoisePET_Debug CMakeFiles\DenoisePET.dir\main.cpp.obj CMakeFiles\DenoisePET.dir\kernel.cu.obj CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj CMakeFiles\DenoisePET.dir\denoise.cu.obj CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj CMakeFiles\DenoisePET.dir\cmake_device_link.obj | nifti_lib.lib || nifti_lib.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = nifti_lib.lib  cudadevrt.lib  cudart_static.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

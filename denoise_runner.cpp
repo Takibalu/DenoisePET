@@ -2,15 +2,13 @@
 // Created by takib on 2025. 05. 21..
 //
 
-#include "denoise.cuh"
+#include <filesystem>
 #include <fstream>
 #include <vector>
-#include <filesystem>
+#include "denoise.cuh"
 
-#include <numeric>
-#include <limits>
 #include <iostream>
-#include <chrono>
+#include <limits>
 
 void print_statistics(const std::vector<float>& data, const std::string& label) {
     float minVal = std::numeric_limits<float>::max();
@@ -34,7 +32,7 @@ void run_denoising(int width, int height, DenoiseMethod method) {
     namespace fs = std::filesystem;
 
     std::string methodName = to_string(method);
-    fs::path outputDir = fs::path("..") / ("denoise_" + methodName + "_" + std::to_string(window*2+1)+ "x"+ std::to_string(window*2+1)+ "_3000_5_25");
+    fs::path outputDir = fs::path("..") / ("denoise_" + methodName + "_" + std::to_string(WINDOW*2+1)+ "x"+ std::to_string(WINDOW*2+1));
     create_directories(outputDir);
 
 
@@ -61,15 +59,14 @@ void run_denoising3D(int width, int height, int depth, DenoiseMethod method) {
     namespace fs = std::filesystem;
 
     std::string methodName = to_string(method);
-    fs::path inputPath = fs::path("..") / "result" / "image_file.raw";
-    fs::path outputDir = fs::path("..") / ("denoise3D_" + methodName + "_" + std::to_string(window*2+1)+ "x"+ std::to_string(window*2+1) + "_2_1500");
+    fs::path inputPath = fs::path("..") / "result" / "pet_image_file.raw";
+    fs::path outputDir = fs::path("..") / ("denoise3D_" + methodName /*+ "_" + std::to_string(window*2+1)+ "x"+ std::to_string(window*2+1)*/ + "_5000_2_6_opt_opt");
     create_directories(outputDir);
 
     size_t volumeSize = static_cast<size_t>(width) * height * depth;
     std::vector<float> input(volumeSize);
     std::vector<float> output(volumeSize);
 
-    // Step 1: Load 3D image
     std::ifstream in(inputPath, std::ios::binary);
     if (!in) {
         std::cerr << "Failed to open 3D input file: " << inputPath << std::endl;
@@ -78,10 +75,8 @@ void run_denoising3D(int width, int height, int depth, DenoiseMethod method) {
     in.read(reinterpret_cast<char*>(input.data()), volumeSize * sizeof(float));
     in.close();
 
-    // Step 2: Denoise the 3D volume
     denoise3D(input.data(), output.data(), width, height, depth, method);
 
-    // Step 3: Save denoised result as individual 2D slices
     for (int z = 0; z < depth; ++z) {
         fs::path outPath = outputDir / ("slice_" + std::to_string(z) + ".raw");
         std::ofstream out(outPath, std::ios::binary | std::ios::trunc);
@@ -104,6 +99,58 @@ void run_denoising3D(int width, int height, int depth, DenoiseMethod method) {
               << " slices and saved to: " << outputDir << std::endl;
 }
 
+void run_denoising3D_joint(int width, int height, int depth, DenoiseMethod method) {
+    namespace fs = std::filesystem;
+
+    std::string methodName = to_string(method);
+    fs::path petInputPath = fs::path("..") / "result" / "pet_image_file.raw";
+    fs::path ctInputPath = fs::path("..") / "result" / "ct_image_file.raw";
+    fs::path outputDir = fs::path("..") / ("denoise3D_" + methodName + "_" + std::to_string(WINDOW*2+1)+ "x"+ std::to_string(WINDOW*2+1) + "_2_1500");
+     create_directories(outputDir);
+
+    size_t volumeSize = static_cast<size_t>(width) * height * depth;
+    std::vector<float> petInput(volumeSize);
+    std::vector<float> ctInput(volumeSize);
+    std::vector<float> output(volumeSize);
+
+    std::ifstream petIn(petInputPath, std::ios::binary);
+    if (!petIn) {
+        std::cerr << "Failed to open 3D input file: " << petInputPath << std::endl;
+        return;
+    }
+    petIn.read(reinterpret_cast<char*>(petInput.data()), volumeSize * sizeof(float));
+    petIn.close();
+
+    std::ifstream ctIn(petInputPath, std::ios::binary);
+    if (!ctIn) {
+        std::cerr << "Failed to open 3D input file: " << petInputPath << std::endl;
+        return;
+    }
+    ctIn.read(reinterpret_cast<char*>(petInput.data()), volumeSize * sizeof(float));
+    ctIn.close();
+
+    denoise3D_joint(petInput.data(), ctInput.data(), output.data(), width, height, depth, method);
+
+    for (int z = 0; z < depth; ++z) {
+        fs::path outPath = outputDir / ("slice_" + std::to_string(z) + ".raw");
+        std::ofstream out(outPath, std::ios::binary | std::ios::trunc);
+        if (!out) {
+            std::cerr << "Failed to write slice: " << outPath << std::endl;
+            continue;
+        }
+
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+                int idx = z * width * height + y * width + x;
+                out.write(reinterpret_cast<char*>(&output[idx]), sizeof(float));
+            }
+        }
+
+        out.close();
+    }
+
+    std::cout << "Joint denoised 3D PET saved to: " << outputDir << std::endl;
+}
 
 
 

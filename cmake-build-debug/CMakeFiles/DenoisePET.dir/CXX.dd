@@ -5,3 +5,5 @@ build CMakeFiles\DenoisePET.dir\pet_processor.cpp.obj: dyndep
 
 build CMakeFiles\DenoisePET.dir\denoise_runner.cpp.obj: dyndep
 
+build CMakeFiles\DenoisePET.dir\ct_processor.cpp.obj: dyndep
+
